@@ -1,7 +1,9 @@
-import { pgTable, serial, integer,varchar, text, timestamp } from "drizzle-orm/pg-core";
-import ticket from "../ticket/schema";
+import { pgTable, serial, integer,varchar, text, timestamp, pgSchema } from "drizzle-orm/pg-core";
+import {ticket} from "../ticketTable/schema";
 
-const responseTable = pgTable("response", {
+export const responseSchema = pgSchema("response_schema")
+
+export const response = pgTable("response", {
   response_id: serial("response_id").primaryKey(),
   ticket_id: integer("ticket_id")
     .notNull()
@@ -11,4 +13,4 @@ const responseTable = pgTable("response", {
   created_at: timestamp("created_at").notNull().defaultNow(),
 });
 
-export default responseTable;
+export default response;

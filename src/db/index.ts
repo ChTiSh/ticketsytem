@@ -1,17 +1,22 @@
-import { neon, neonConfig } from '@neondatabase/serverless';
+import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
-import ticketSchema from './ticket/schema'; 
-import responseSchema from './response/schema';
+import {ticketSchema} from './ticketTable/schema'; 
+import responseSchema from './responseTable/schema';
+import dotenv from 'dotenv';
+dotenv.config();
 
-neonConfig.fetchConnectionCache = true;
 const schema = {
     ...ticketSchema,
     ...responseSchema,
 }
+if (!process.env.DATABASE_URL) {
+    throw new Error("No database connection string provided.");
+  }
 
 const db = drizzle(
-  neon(process.env.DRIZZLE_DATABASE_URL!),
+  neon(process.env.DATABASE_URL!),
   {schema} 
 );
+console.log(db, 'hey this is what i got from db')
 
 export { db };
