@@ -66,11 +66,11 @@
   }
 }
  
-@layer base {
-  * {
-    @apply border-border;
+@layer components {
+  .btn {
+    @apply rounded-md;
   }
-  body {
-    @apply bg-background text-foreground;
+  border{
+    @apply border;
   }
 }

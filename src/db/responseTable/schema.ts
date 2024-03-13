@@ -3,7 +3,7 @@ import {ticket} from "../ticketTable/schema";
 
 export const responseSchema = pgSchema("response_schema")
 
-export const response = pgTable("response", {
+export const response = responseSchema.table("response", {
   response_id: serial("response_id").primaryKey(),
   ticket_id: integer("ticket_id")
     .notNull()

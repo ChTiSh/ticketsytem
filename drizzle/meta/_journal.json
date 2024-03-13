@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1710270076540,
+      "tag": "0000_charming_secret_warriors",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1710270405657,
+      "tag": "0001_clear_tony_stark",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1710270477429,
+      "tag": "0002_sparkling_mac_gargan",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "id": "cfe8702f-3468-42d9-96ef-65ccdfffa499",
+  "prevId": "c4215ad7-f1de-41f8-9ba9-52ca6836dba5",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "response": {
+      "name": "response",
+      "schema": "response_schema",
+      "columns": {
+        "response_id": {
+          "name": "response_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "ticket_id": {
+          "name": "ticket_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "responder_name": {
+          "name": "responder_name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "response": {
+          "name": "response",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "response_ticket_id_ticket_ticket_id_fk": {
+          "name": "response_ticket_id_ticket_ticket_id_fk",
+          "tableFrom": "response",
+          "tableTo": "ticket",
+          "schemaTo": "ticket_schema",
+          "columnsFrom": [
+            "ticket_id"
+          ],
+          "columnsTo": [
+            "ticket_id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "ticket": {
+      "name": "ticket",
+      "schema": "ticket_schema",
+      "columns": {
+        "ticket_id": {
+          "name": "ticket_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {
+    "response_schema": "response_schema",
+    "ticket_schema": "ticket_schema"
+  },
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

@@ -4,7 +4,7 @@ import response from "../responseTable/schema";
 
 export const ticketSchema = pgSchema("ticket_schema")
 console.log('ticketSchema', ticketSchema)
-export const ticket = pgTable("ticket", {
+export const ticket = ticketSchema.table("ticket", {
   ticket_id: serial("ticket_id").primaryKey(),
   name: varchar("name", { length: 100 }).notNull(), // Changed to varchar
   email: varchar("email", { length: 255 }).notNull(),

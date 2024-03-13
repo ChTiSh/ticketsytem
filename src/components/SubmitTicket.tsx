@@ -1,3 +1,4 @@
+//'use client'
 import * as Form from '@radix-ui/react-form';
  
 export default function SubmitTicket (): JSX.Element {
@@ -5,20 +6,20 @@ export default function SubmitTicket (): JSX.Element {
         event.preventDefault();
         const data = Object.fromEntries(new FormData(event.currentTarget));
         //need to send the data to databasen once the db connection is setup
-        console.log(data);
+        
         try {
-            const response = await fetch('http://localhost:3000/api/ticket-data', {
+            const response = await fetch('api/ticket-data', {
                 method: 'POST',
                 headers: {  
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data),
             });
-    
+            
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-    
+            
             const result = await response.json();
             console.log('Form submitted successfully:', result);
             // Handle successful form submission here, maybe clear the form or show a success message
